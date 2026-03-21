@@ -23,6 +23,7 @@ const skillCategories = [
       "Solidity",
       "C++",
       "Rust",
+      "Sql",
     ],
   },
   {
@@ -43,6 +44,9 @@ const skillCategories = [
       "WebSocket",
       "gRPC",
       "NextJS",
+      "kafka",
+      "Microservice",
+      "Redis MQ, Pub/Sub",
     ],
   },
   {
@@ -57,6 +61,9 @@ const skillCategories = [
       "Docker",
       "Git",
       "AWS",
+      "Kubernetes",
+      "Prometheus",
+      "CI/CD",
     ],
   },
 ];
@@ -66,13 +73,20 @@ const experiences = [
     title: "Backend Developer",
     company: "IthiSaga Dev Pvt Ltd",
     location: "Hyderabad",
-    period: "Feb 2025 – Present",
+    period: "Feb 2025 – Feb 2026",
     description: [
       "Migrated entire frontend to React with role-based authorization",
       "Implemented map integration using MapMyIndia and Leaflet",
       "Working with PostgreSQL, Express, Docker Compose, and AWS",
     ],
-    technologies: ["PostgreSQL", "React", "Express", "Docker", "AWS"],
+    technologies: [
+      "PostgreSQL",
+      "React",
+      "Express",
+      "Docker",
+      "AWS",
+      "Docker-Compose",
+    ],
     icon: "fas fa-briefcase",
     color: "primary",
     current: true,
@@ -226,6 +240,25 @@ const projects = [
     icon: "fas fa-briefcase",
     gradient: "secondary-accent",
     githubUrl: "https://github.com/AyushmaanPandey11/job-portal",
+    liveUrl: null,
+    featured: true,
+  },
+  {
+    title: "Quiz Microservice",
+    description:
+      "Simple Implementation of a Microservice in Java using Spring Boot, Eureka Service Registry, Api gateway, postgres database and docker for a quiz application.",
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "Eureka Serive Registry",
+      "Api Gateway",
+      "PostgreSQL",
+      "Docker",
+    ],
+    category: ["java", "backend"],
+    icon: "fas fa-briefcase",
+    gradient: "secondary-accent",
+    githubUrl: "https://github.com/AyushmaanPandey11/quiz-microservice",
     liveUrl: null,
     featured: true,
   },
@@ -482,12 +515,12 @@ function initSkills() {
         ${category.skills
           .map(
             (skill) =>
-              `<span class="skill-tag ${category.color}">${skill}</span>`
+              `<span class="skill-tag ${category.color}">${skill}</span>`,
           )
           .join("")}
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 }
@@ -526,7 +559,7 @@ function initExperience() {
           <div class="experience-tech">
             ${exp.technologies
               .map(
-                (tech) => `<span class="tech-tag ${exp.color}">${tech}</span>`
+                (tech) => `<span class="tech-tag ${exp.color}">${tech}</span>`,
               )
               .join("")}
           </div>
@@ -534,7 +567,7 @@ function initExperience() {
       </div>
       <div class="timeline-dot ${exp.current ? "current" : "past"}"></div>
     </div>
-  `
+  `,
     )
     .join("");
 }
@@ -554,7 +587,7 @@ function initProjects() {
             data-filter="${filter.id}">
       ${filter.label}
     </button>
-  `
+  `,
     )
     .join("");
 
@@ -636,7 +669,7 @@ function renderProjects() {
         </div>
       </div>
     </div>
-  `
+  `,
     )
     .join("");
 }
@@ -676,7 +709,7 @@ function initContactForm() {
       showToast(
         "Invalid Email",
         "Please enter a valid email address.",
-        "error"
+        "error",
       );
       return;
     }
@@ -691,16 +724,16 @@ function initContactForm() {
 
       // Create mailto link as fallback
       const mailtoLink = `mailto:ayushmaan1122pandey@gmail.com?subject=${encodeURIComponent(
-        subject
+        subject,
       )}&body=${encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       )}`;
       window.location.href = mailtoLink;
 
       showToast(
         "Message prepared!",
         "Your email client will open with the message ready to send.",
-        "success"
+        "success",
       );
       contactForm.reset();
     } catch (error) {
@@ -708,7 +741,7 @@ function initContactForm() {
       showToast(
         "Error",
         "Failed to prepare message. Please try again.",
-        "error"
+        "error",
       );
     } finally {
       submitBtn.disabled = false;
@@ -745,7 +778,7 @@ function initResumeDownload() {
       showToast(
         "Download Error",
         "Failed to download resume. Please try again.",
-        "error"
+        "error",
       );
     }
   });
@@ -798,12 +831,12 @@ function initAnimationObserver() {
     {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
-    }
+    },
   );
 
   // Observe elements that should animate on scroll
   const animatedElements = document.querySelectorAll(
-    ".skill-card, .experience-card, .project-card"
+    ".skill-card, .experience-card, .project-card",
   );
   animatedElements.forEach((el) => observer.observe(el));
 }
